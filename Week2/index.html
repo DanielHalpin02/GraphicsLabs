@@ -35,6 +35,8 @@
       
       // The vertical location of the ball.
       var y = 10;
+      var ySpeed = 1;
+      var xSpeed = 1;
       // A function to repeat every time the animation loops.
       function repeatme() {
         
@@ -43,9 +45,15 @@
         ctx.beginPath();
         ctx.arc(50, y, 3, 0, 2 * Math.PI);
         ctx.stroke();
+
+        // If the ball hits the bottom of the canvas.
+        if (y >= canvas.height) {
+        // Stop the ball.
+           ySpeed = 0;
+        }
         
         // Update the y location.
-        y += 1;
+        y += ySpeed;
         
         window.requestAnimationFrame(repeatme);
       }
