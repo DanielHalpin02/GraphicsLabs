@@ -46,14 +46,21 @@
         ctx.arc(50, y, 3, 0, 2 * Math.PI);
         ctx.stroke();
 
+        // Update the y location.
+        y += ySpeed;
+        
         // If the ball hits the bottom of the canvas.
         if (y >= canvas.height) {
         // Stop the ball.
-           ySpeed = 0;
+           ySpeed= -ySpeed;
         }
-        
-        // Update the y location.
-        y += ySpeed;
+
+        // If the ball hits the bottom of the canvas.
+        else if(y<= 0)
+        {
+             // Change ball's direction. (reverse the speed)
+            ySpeed = -1;
+        }
         
         window.requestAnimationFrame(repeatme);
       }
