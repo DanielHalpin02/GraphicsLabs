@@ -35,7 +35,7 @@
       
       // The vertical location of the ball.
       var y = 10;
-      var ySpeed = 1;
+      var ySpeed = 3;
       var xSpeed = 1;
       // A function to repeat every time the animation loops.
       function repeatme() {
@@ -50,17 +50,19 @@
         y += ySpeed;
         
         // If the ball hits the bottom of the canvas.
-        if (y >= canvas.height) {
+        if (y + 3 >= canvas.height) {
         // Stop the ball.
-           ySpeed= -ySpeed;
+           ySpeed= -3;
         }
 
-        // If the ball hits the bottom of the canvas.
-        else if(y<= 0)
+        
+        else  if(y - 3 <= 0)
         {
-             // Change ball's direction. (reverse the speed)
-            ySpeed = -1;
+            
+            ySpeed = 3;
         }
+        
+        
         
         window.requestAnimationFrame(repeatme);
       }
