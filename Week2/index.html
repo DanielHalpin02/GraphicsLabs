@@ -88,7 +88,18 @@
         
         b1.draw();
         b1.move();
-      
+
+        //Drawing pacman
+        //Adding Math.Pi will rotate the wedge 180degrees
+        
+        ctx.beginPath();
+        ctx.arc(100, 120, 20, Math.PI/ 4+ Math.PI, 7 *(Math.PI / 4)+Math.PI);
+        ctx.lineTo(100,120);
+        xMouth = (20 * Math.cos(Math.PI /4 +Math.PI))+100;
+        yMouth = (20 * Math.sin(Math.PI / 4 + Math.PI))+ 120;
+        ctx.lineTo(xMouth, yMouth);
+        ctx.stroke;
+
         window.requestAnimationFrame(repeatme);
       }
       
