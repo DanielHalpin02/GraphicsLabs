@@ -31,7 +31,7 @@
       var ctx = canvas.getContext("2d");
 
       class Ball{
-        constructor(x, y ,xSpeed, ySpeed){
+        constructor(x, y ,xSpeed, ySpeed, r){
           this.x=x;
           this.y = y;
           this.xSpeed = xSpeed;
@@ -41,7 +41,7 @@
 
         draw(){
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.r, 0.2*Math.PI);
+          ctx.arc(this.x, this.y, this.r, 0,2*Math.PI);
           ctx.stroke();
         }
 
@@ -98,7 +98,7 @@
         xMouth = (20 * Math.cos(Math.PI /4 +Math.PI))+100;
         yMouth = (20 * Math.sin(Math.PI / 4 + Math.PI))+ 120;
         ctx.lineTo(xMouth, yMouth);
-        ctx.stroke;
+        ctx.stroke();
 
         window.requestAnimationFrame(repeatme);
       }
