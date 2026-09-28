@@ -12,7 +12,7 @@
           background-color: white;
         }
 
-      canvas {
+      canvas { /*Black border drawn around canvas */
                 border: 4px solid black;
         }
     </style>
@@ -20,17 +20,61 @@
   </head>
 
   <body>
-    <h1>Daniel Halpin</h1>
+    <h1>Daniel Halpin</h1> //student name
 
-    <canvas id="canvas-for-ball" width="600" height="400">
-        
-    </canvas>
+    <canvas id="canvas-for-ball" width="600" height="400"></canvas>
 
     <script type="text/javascript">
       // Gets a handle to the element with id canvasOne.
       var canvas = document.getElementById("canvas-for-ball");
       // Get a 2D context for the canvas.
       var ctx = canvas.getContext("2d");
+
+      class Ball{
+        constructor(x, y ,xSpeed, ySpeed){
+          this.x=x;
+          this.y = y;
+          this.xSpeed = xSpeed;
+          this.ySpeed = ySpeed;
+          this.r = r;
+        }
+
+        draw(){
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.r, 0.2*Math.PI);
+          ctx.stroke();
+        }
+
+        move() {
+          //code to update the Y location
+          this.y += this.ySpeed;
+
+          if(this.y + this.r >= canvas.height){
+            this.ySpeed *= -1;
+          }
+
+          if(this.y - this.r <= 0){
+          this.ySpeed *= -1;
+          }
+
+          //code to update the X location
+          this.x += this.xSpeed;
+
+          if(this.x + this.r >= canvas.width){
+            this.xSpeed *= -1;
+          }
+
+          if(this.x - this.r <= 0){
+          this.xSpeed *= -1;
+          }
+
+        }
+
+        //resize method to change size of ball
+        resize(newRadius){
+          this.r = newRadius;
+        }
+      }
       
       
       // The vertical location of the ball.
