@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <h1>Daniel Halpin</h1> //student name
+    <h1>Daniel Halpin</h1> 
 
     <canvas id="canvas-for-ball" width="600" height="400"></canvas>
 
@@ -77,47 +77,18 @@
       }
       
       
-      // The vertical location of the ball.
-      var y = 10;
-      var x = 5;
-      var ySpeed = 3;
-      var xSpeed = 1;
+      // Create new ball object
+      var b1 = new Ball(50, 10, 3, 3, 3);
+      
       // A function to repeat every time the animation loops.
       function repeatme() {
-        
-        // Draw the ball (stroked, not filled).
+
+        // Draw the ball.
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.arc(x, y, 3, 0, 2 * Math.PI);
-        ctx.stroke();
-
-        // Update the y location.
-        y += ySpeed;
-        x += xSpeed;
         
-        // If the ball hits the bottom of the canvas.
-        if (y + 3 >= canvas.height) {
-        // Stop the ball.
-           ySpeed= -3;
-        }
-
-        else  if(y - 3 <= 0)
-        {
-            ySpeed = 3;
-        }
-
-         if (x + 3 >= canvas.width) {
-        // Stop the ball.
-           xSpeed= -3;
-        }
-
-        else  if(x - 3 <= 0)
-        {
-            xSpeed = 3;
-        }
-        
-        
-        
+        b1.draw();
+        b1.move();
+      
         window.requestAnimationFrame(repeatme);
       }
       
