@@ -80,7 +80,21 @@
         constructor(x,y,xSpeed,ySpeed,r){
           super (x,y,xSpeed,ySpeed,r);
         }
-        
+      draw(){
+        var start = Math.PI / 4 + Math.PI;
+        var end = 7 * (Math.PI /4)+Math.PI;
+
+        ctx.beginPath();
+        ctx.arc(this.x,thisy,this.r, start, end);
+        ctx.lineTo(this.x, this.y);
+        //polar to cartesian to get point where mouth starts
+        var xMouth = (this.r * Math.cos(start))+ this.x;
+        var yMouth = (this.r + Math.sin(start))+this.y;
+        ctx.lineTo(xMouth, yMouth);
+        ctx.stroke();
+      }
+
+      
          
       }
       
