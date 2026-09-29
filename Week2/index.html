@@ -75,10 +75,17 @@
           this.r = newRadius;
         }
       }
-      
+      //Pacman class that extends Ball so it gets x,y, soeed and r
+      class Pacman extends Ball{
+        constructor(x,y,xSpeed,ySpeed,r){
+          super (x,y,xSpeed,ySpeed,r);
+        }
+        
+         
+      }
       
       // Create new ball object
-      var b1 = new Ball(50, 10, 3, 3, 3);
+      var b1 = new Ball(50, 10, 3, 3, 8);
       
       // A function to repeat every time the animation loops.
       function repeatme() {
