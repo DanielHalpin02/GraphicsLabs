@@ -109,12 +109,15 @@
       
       //create new pacman object
       var p1 = new Pacman(300,200,-2,6,20);
+      p1.resize(30);
+
       // A function to repeat every time the animation loops.
       function repeatme() {
 
-        // Draw the ball.
+        //clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
+        // Draw the ball.
         b1.draw();
         b1.move();
 
