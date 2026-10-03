@@ -20,11 +20,7 @@
   </head>
 
   <body>
-<<<<<<< HEAD
-    <h1>Daniel Halpin</h1> //student name
-=======
     <h1>Daniel Halpin</h1> 
->>>>>>> 441fd122fdc408f8934d588de8940d5a8bb7f700
 
     <canvas id="canvas-for-ball" width="600" height="400"></canvas>
 
@@ -35,11 +31,7 @@
       var ctx = canvas.getContext("2d");
 
       class Ball{
-<<<<<<< HEAD
-        constructor(x, y ,xSpeed, ySpeed){
-=======
         constructor(x, y ,xSpeed, ySpeed, r){
->>>>>>> 441fd122fdc408f8934d588de8940d5a8bb7f700
           this.x=x;
           this.y = y;
           this.xSpeed = xSpeed;
@@ -49,11 +41,7 @@
 
         draw(){
           ctx.beginPath();
-<<<<<<< HEAD
-          ctx.arc(this.x, this.y, this.r, 0.2*Math.PI);
-=======
           ctx.arc(this.x, this.y, this.r, 0,2*Math.PI);
->>>>>>> 441fd122fdc408f8934d588de8940d5a8bb7f700
           ctx.stroke();
         }
 
@@ -87,8 +75,6 @@
           this.r = newRadius;
         }
       }
-<<<<<<< HEAD
-=======
       //Pacman class that extends Ball so it gets x,y, soeed and r
       class Pacman extends Ball{
         constructor(x,y,xSpeed,ySpeed,r){
@@ -117,7 +103,6 @@
       }
          
       }
->>>>>>> 441fd122fdc408f8934d588de8940d5a8bb7f700
       
       // Create new ball object
       var b1 = new Ball(50, 10, 3, 3, 8);
