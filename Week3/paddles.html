@@ -82,6 +82,8 @@
             super (x,y,xSpeed,ySpeed,r);
             this.angle = 0; // how far pacman is rotated
             this.angularVelocity = 0.05; //how much the spin speed changes
+            this.gravity = 0.3; //added to ySpeed so pacman speeds up falling
+            this.bounce = Math.sqrt(0.9);//speed kept after each bounce so it reaches 90% of the height
         }
 
       draw(){
@@ -99,7 +101,34 @@
       }
       //pacman moves and bounces off the walls the same as the ball
       move(){
-        super.move();
+        //gravity pulls pacman down a bit more for each frame
+        this.ySpeed += this.gravity;
+        //code to update Y location
+        this.y += this.ySpeed;
+
+        //bounce off the bottom and lose some energy
+        if(this.y + this.r >=canvas.height){
+            this.y = canvas.height - this.r;
+            this.ySpeed *= -this.bounce; 
+        }
+
+        //bounce off the top
+        if(this.y - this.r <= 0){
+            this.y = this.r;
+            this.ySpeed *= -1;
+        }
+
+        //code to update the X location
+        this.x += this.xSpeed;
+
+        if(this.x + this.r >= canvas.width){
+            this.xSpeed *= -1;
+        }
+
+        if(this.x - this.r <= 0){
+            this.xSpeed *= -1;
+        }
+
         //rotate pacman each frame
         this.angle += this.angularVelocity;
       }
@@ -107,6 +136,7 @@
       //spins faster
       spinFaster(){
         this.angularVelocity += 0.01;
+        
       }
 
       //spins slower
@@ -160,7 +190,7 @@
             this.y=y - this.height /2;
 
             //stop at the top of the canvas
-            if(this.y = 0){
+            if(this.y <= 0){
                 this.y = 0;
             }
 
@@ -183,7 +213,7 @@
       window.addEventListener("keydown", function(event){
         switch(event.key){
             //up arrow moves paddle up
-            case "ArrowUp":Pacman
+            case "ArrowUp":
             paddle1.moveUp();
             event.preventDefault();
             break;
@@ -191,7 +221,7 @@
         //down arrow moves paddle down
         case "ArrowDown":
             paddle1.moveDown();
-            evennt.preventDefault();
+            event.preventDefault();
             break;
 
         //W moves second paddle up
@@ -221,7 +251,7 @@
       //mouse controls the paddle
       canvas.addEventListener("mousemove", function(event) {
         var y = event.clientY - canvas.offsetTop;
-        paddle.moveTo(y);
+        paddle1.moveTo(y);
       });
 
       // A function to repeat every time the animation loops.
