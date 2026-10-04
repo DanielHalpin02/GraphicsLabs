@@ -164,6 +164,8 @@
       //create new paddle object
       var paddle1 = new Paddle(10,160,10,80,15);
 
+      var paddle2 = new Paddle(canvas.width -20, 160, 10, 80, 15);
+
       //keyboard controls
       window.addEventListener("keydown", function(event){
         switch(event.key){
@@ -177,6 +179,16 @@
         case "ArrowDown":
             paddle1.moveDown();
             evennt.preventDefault();
+            break;
+
+        //W moves second paddle up
+        case "w":
+            paddle2.moveUp();
+            break;
+
+        //S moves second paddle down
+        case "s":
+            paddle2.moveDown();
             break;
         }
       }
@@ -214,6 +226,8 @@
 
         paddle1.draw();
 
+        paddle2.draw();
+        
         window.requestAnimationFrame(repeatme);
       }
       
