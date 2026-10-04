@@ -152,11 +152,7 @@
                 this.y = canvas.height - this.height;
             }
         }
-    }
-      
-      // Create new ball object
-      var b1 = new Ball(50, 10, 3, 3, 8);
-      
+    }    
       //create new pacman object
       var p1 = new Pacman(300,200,-2,6,20);
       p1.resize(30);
@@ -206,28 +202,14 @@
         //clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        // Draw the ball.
-        b1.draw();
-        b1.move();
-
+        //draw and move pacman
         p1.draw();
         p1.move();
 
-        //Drawing pacman
-        //Adding Math.Pi will rotate the wedge 180degrees
-        
-        ctx.beginPath();
-        ctx.arc(100, 120, 20, Math.PI/ 4+ Math.PI, 7 *(Math.PI / 4)+Math.PI);
-        ctx.lineTo(100,120);
-        xMouth = (20 * Math.cos(Math.PI /4 +Math.PI))+100;
-        yMouth = (20 * Math.sin(Math.PI / 4 + Math.PI))+ 120;
-        ctx.lineTo(xMouth, yMouth);
-        ctx.stroke();
-
+        //draw the paddles
         paddle1.draw();
-
         paddle2.draw();
-        
+
         window.requestAnimationFrame(repeatme);
       }
       
