@@ -137,7 +137,22 @@
                 this.y = canvas.height - this.height;
             }
         }
-      }
+
+        //move the paddle so its centre is at the mouse y position
+        moveTo(y){
+            this.y=y - this.height /2;
+
+            //stop at the top of the canvas
+            if(this.y = 0){
+                this.y = 0;
+            }
+
+            //stop at bottom of canvas
+            if(this.y + this.height >= canvas.height){
+                this.y = canvas.height - this.height;
+            }
+        }
+    }
       
       // Create new ball object
       var b1 = new Ball(50, 10, 3, 3, 8);
@@ -148,6 +163,30 @@
 
       //create new paddle object
       var paddle1 = new Paddle(10,160,10,80,15);
+
+      //keyboard controls
+      window.addEventListener("keydown", function(event){
+        switch(event.key){
+            //up arrow moves paddle up
+            case "ArrowUp":Pacman
+            paddle1.moveUp();
+            event.preventDefault();
+            break;
+
+        //down arrow moves paddle down
+        case "ArrowDown":
+            paddle1.moveDown();
+            evennt.preventDefault();
+            break;
+        }
+      }
+    )
+
+      //mouse controls the paddle
+      canvas.addEventListener("mousemove", function(event) {
+        var y = event.clientY - canvas.offsetTop;
+        paddle.moveTo(y);
+      });
 
       // A function to repeat every time the animation loops.
       function repeatme() {
