@@ -75,14 +75,18 @@
           this.r = newRadius;
         }
       }
+
       //Pacman class that extends Ball so it gets x,y, soeed and r
       class Pacman extends Ball{
         constructor(x,y,xSpeed,ySpeed,r){
-          super (x,y,xSpeed,ySpeed,r);
+            super (x,y,xSpeed,ySpeed,r);
+            this.angle = 0; // how far pacman is rotated
+            this.angularVelocity = 0.05; //how much the spin speed changes
         }
+
       draw(){
-        var start = Math.PI / 4 + Math.PI;
-        var end = 7 * (Math.PI /4)+Math.PI;
+        var start = Math.PI / 4 + Math.PI + this.angle;
+        var end = 7 * (Math.PI /4)+Math.PI + this.angle;
 
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.r, start, end);
@@ -96,7 +100,20 @@
       //pacman moves and bounces off the walls the same as the ball
       move(){
         super.move();
+        //rotate pacman each frame
+        this.angle += this.angularVelocity;
       }
+
+      //spins faster
+      spinFaster(){
+        this.angularVelocity += 0.01;
+      }
+
+      //spins slower
+      spinsSlower(){
+        this.angularVelocity -= 0.01;
+      }
+
       //resize method to change size of pacman
       resize(newRadius){
           this.r = newRadius;
@@ -185,6 +202,17 @@
         //S moves second paddle down
         case "s":
             paddle2.moveDown();
+            break;
+
+        //right arrow makes the pacman spin faster
+        case "ArrowRight":
+            p1.spinFaster();
+            event.preventDefault();
+            break;
+
+        case "ArrowLeft":
+            p1.spinsSlower();
+            event.preventDefault();
             break;
         }
       }
